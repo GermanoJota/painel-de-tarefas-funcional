@@ -1,0 +1,151 @@
+<!--NOMES: DIOGO PIVA; GABRIEL FRANCISCO; JOÃO GABRIEL GERMANO-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main-container">
+        <div class="content-wrapper">
+            <div id="conteudo-app" class="app-content">
+
+                <!-- grid de 1/3 e 2/3 -->
+                 <div class="layout-grid">
+
+                    <!-- Formulario -->
+                     <div class="sidebar-col">
+
+                        <div class="form-card">
+
+                            <div class="form-header">
+
+                                <h2 id="form-titulo" class="form-title">Nova Tarefa</h2>
+                                <button id="btn-cancelar" class="btn-cancel hidden">Cancelar edição</button>
+
+                            </div>
+
+                            <!--formulario das tarefas-->
+                            <form id="form-tarefas" class="form-body">
+
+
+                             <!--campo oculto usado durante o UPDATE-->
+
+
+                             <input type="hidden" name="id" id="tarefa-id" value="">
+
+                             <div class="form-group">
+
+
+                                <label class="form-label" for="tarefa-titulo">
+                                    Título <span class="required">*</span>
+                                </label>
+                                
+                                <input type="text"
+                                 class="form-control"
+                                 id="tarefa-titulo"
+                                 placeholder=""
+                                 required>
+
+                             </div>
+
+                             <div class="form-group">
+
+                                <label for="descricao-tarefa" class="form-label">Descrição</label>
+                                <textarea 
+                                    name="descricao-tarefa"
+                                    class="form-control form-control-desc"
+                                    id="tarefa-descricao"
+                                    rows="10"
+                                    aria-modal="false"
+                                    placeholder=""></textarea>
+                                
+
+                            
+
+                            <div class="form-group">
+
+                                <label for="tarefa-urgencia"class="form-label">Urgência</label>
+                               <select name="tarefa-urgencia" id="tarefa-urgencia" class="form-control">
+                                <option value="Não Urgente">Não Urgente</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Urgente">Urgente</option>
+                               </select>
+                                    
+                               </div>
+                            </div>
+
+                            <button type="submit" id="btn-salvar" class="btn-submit">
+                                <i class="fas fa-save"></i>
+                                <span id="btn-salvar-text">Salvar Tarefa</span>
+                            </button>
+                            </form>
+
+                        </div>
+
+                     </div>
+                     <!--tabela de usuarios-->
+                     <div class="main-col">
+                        <div class="table-card">
+                            <div class="form-header">
+                                <h2 class="form-title">Tarefas Cadastradas</h2>
+                                
+
+                                <button onclick="window.location.reload()"
+                                class="btn-refresh" type="refresh" id="btn-refresh" >
+                                <i class="fas fa-sync-alt"></i>
+                                Atualizar
+                            </button>
+                            
+                            </div><div class="main-col">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr class="table-head-row">
+                                            <th>ID</th>
+                                            <th>TÍTULO / DESCRIÇÃO</th>
+                                            <th class="text-center">CRIADO<br>EM</th>
+                                            <th class="text-center"><label for="filtro-urgencia">Urgência</label>
+                                                <select name="filtro-urgencia" id="filtro-urgencia" class="form-control filtro-urgencia">
+                                                    <option value="Todos">Todos</option>
+                                                    <option value="Não Urgente">Não Urgente</option>
+                                                    <option value="Normal">Normal</option>
+                                                    <option value="Urgente">Urgente</option>
+                                                </select>
+                                            </th>
+                                            <th class="text-center">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela-corpo">
+                                        <tr>
+                                            <td colspan="5" class="empty-state">
+                                                <i class=" fas fa-spinner fa-spin"></i><br>
+                                                Nenhum dado encontrado.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                     </div>
+
+                 </div>
+            </div>
+        </div>
+    </main>
+    <!--container do toast-->
+    <div id="toast-container"></div>
+    <!--JavaScript-->
+
+    <script type="module" src="script.js"></script>
+    
+</body>
+</html>
+
+
+
